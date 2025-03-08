@@ -91,4 +91,6 @@ export const signIn = async (req, res, next) => {
   }
 }
 
-export const singOut = async (req, res, next) => {}
+export const singOut = async (req, res, next) => {
+  console.log(req, res, next)
+}
