@@ -25,7 +25,16 @@ const subscriptionSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['entertainment', 'food', 'health', 'shopping', 'transport', 'travel', 'utilities', 'other'],
+      enum: [
+        'entertainment',
+        'food',
+        'health',
+        'shopping',
+        'transport',
+        'travel',
+        'utilities',
+        'other'
+      ],
       required: true
     },
     paymentMethod: {
@@ -42,7 +51,7 @@ const subscriptionSchema = new mongoose.Schema(
       type: Date,
       required: true,
       validate: {
-        validator: value => value <= new Date(),
+        validator: (value) => value <= new Date(),
         message: 'Subscription Start Date must be in the past'
       }
     },
@@ -76,7 +85,9 @@ subscriptionSchema.pre('save', function (next) {
     }
 
     this.renewalDate = new Date(this.startDate)
-    this.renewalDate.setDate(this.renewalDate.getDate() + renewalPeriods[this.frequency])
+    this.renewalDate.setDate(
+      this.renewalDate.getDate() + renewalPeriods[this.frequency]
+    )
   }
 
   if (this.renewalDate < new Date()) {

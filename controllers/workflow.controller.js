@@ -7,7 +7,7 @@ const { serve } = require('@upstash/workflow/express')
 
 const REMINDERS = [7, 5, 2, 1]
 
-export const sendReminders = serve(async context => {
+export const sendReminders = serve(async (context) => {
   const { subscriptionId } = context.requestPayload
   const subscription = await fetchSubscription(context, subscriptionId)
 
@@ -33,7 +33,11 @@ export const sendReminders = serve(async context => {
     }
 
     if (dayjs().isSame(reminderDate, 'day')) {
-      await triggerReminder(context, `${daysBefore} days before reminder`, subscription);
+      await triggerReminder(
+        context,
+        `${daysBefore} days before reminder`,
+        subscription
+      )
     }
   }
 })
@@ -52,7 +56,7 @@ const sleepUntilReminder = async (context, label, date) => {
 const triggerReminder = async (context, label, subscription) => {
   return await context.run(label, async () => {
     console.log(`Triggering ${label} reminder`)
-    
+
     await sendReminderEmail({
       to: subscription.user.email,
       type: label,
