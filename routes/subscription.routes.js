@@ -8,31 +8,31 @@ import authMiddleware from '../middlewares/auth.middleware.js'
 const subscriptionRouter = Router()
 
 subscriptionRouter.get('/', (req, res) =>
-  res.send({ title: 'Get all subscriptions' })
+  res.send({ title: 'GET all subscriptions' })
 )
 
 subscriptionRouter.get('/:id', (req, res) =>
-  res.send({ title: 'Get subscription details' })
+  res.send({ title: 'GET subscription details' })
 )
 
 subscriptionRouter.post('/', authMiddleware, createSubscription)
 
 subscriptionRouter.put('/:id', (req, res) =>
-  res.send({ title: 'Update a subscription' })
+  res.send({ title: 'UPDATE a subscription' })
 )
 
 subscriptionRouter.delete('/:id', (req, res) =>
-  res.send({ title: 'Delete a subscription' })
+  res.send({ title: 'DELETE a subscription' })
 )
 
 subscriptionRouter.get('/user/:id', authMiddleware, getUserSubscriptions)
 
 subscriptionRouter.put('/:id/cancel', (req, res) =>
-  res.send({ title: 'Cancel a subscription' })
+  res.send({ title: 'CANCEL a subscription' })
 )
 
 subscriptionRouter.get('/upcoming-renewals', (req, res) =>
-  res.send({ title: 'Get upcoming renewals' })
+  res.send({ title: 'GET upcoming renewals' })
 )
 
 export default subscriptionRouter

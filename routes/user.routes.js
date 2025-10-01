@@ -8,10 +8,10 @@ userRouter.get('/', getUsers)
 
 userRouter.get('/:id', authMiddleware, getUser)
 
-userRouter.post('/', (req, res) => res.send({ title: 'Create a new user' }))
+userRouter.post('/', (req, res) => res.send({ title: 'CREATE a new user' }))
 
-userRouter.put('/:id', (req, res) => res.send({ title: 'Update a user' }))
+userRouter.put('/:id', (req, res) => res.send({ title: 'UPDATE a user' }))
 
-userRouter.delete('/:id', (req, res) => res.send({ title: 'Delete a user' }))
+userRouter.delete('/:id', (req, res) => res.send({ title: 'DELETE a user' }))
 
 export default userRouter

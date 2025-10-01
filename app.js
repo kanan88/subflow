@@ -2,7 +2,7 @@ import express from 'express'
 import { PORT } from './config/env.js'
 
 import cookieParser from 'cookie-parser'
-import connectToDatabase from './database/mongodb.js'
+//import connectToDatabase from './database/mongodb.js'
 import arcjetMiddleware from './middlewares/arcjet.middleware.js'
 import errorMiddleware from './middlewares/error.middleware.js'
 import authRouter from './routes/auth.routes.js'
@@ -33,7 +33,7 @@ app.listen(PORT, async () => {
     `Subscription Tracker API is running on port http://localhost:${PORT}`
   )
 
-  await connectToDatabase()
+  //await connectToDatabase()
 })
 
 export default app
