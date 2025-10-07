@@ -7,7 +7,7 @@ const { serve } = require('@upstash/workflow/express')
 
 const REMINDERS = [7, 5, 2, 1]
 
-export const sendReminders = serve(async (context) => {
+export const sendReminders = serve(async context => {
   const { subscriptionId } = context.requestPayload
   const subscription = await fetchSubscription(context, subscriptionId)
 

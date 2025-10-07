@@ -4,7 +4,7 @@ import authMiddleware from '../middlewares/auth.middleware.js'
 
 const userRouter = Router()
 
-userRouter.get('/', getUsers)
+userRouter.get('/', authMiddleware, getUsers)
 
 userRouter.get('/:id', authMiddleware, getUser)
 
